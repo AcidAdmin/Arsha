@@ -1,0 +1,41 @@
+# Define the stages of the pipeline
+stages:
+  - build
+  - test
+  - deploy
+
+# Define a job for the "build" stage
+build:
+  stage: build
+  script:
+    - # Add commands to build your project here
+    - # For example, if you're building a Node.js app:
+    - npm install
+    - npm run build
+
+# Define a job for the "test" stage
+test:
+  stage: test
+  script:
+    - # Add commands to run your tests here
+    - # For example, if you're running unit tests:
+    - npm test
+
+# Define a job for the "deploy" stage
+deploy:
+  stage: deploy
+  script:
+    - # Add commands to deploy your project here
+    - # For example, if you're deploying to a web server using SSH:
+    - ssh user@your-server 'cd /path/to/your/app && git pull'
+    - # You might also restart your web server or perform other deployment tasks here
+
+# You can define environment variables or secrets here if needed
+# variables:
+#   MY_SECRET_KEY: "your-secret-key"
+
+# You can define specific branches that trigger the pipeline
+# by specifying "only" or "except" for each job
+# For example, to trigger the pipeline only on the master branch:
+# only:
+#   - master
